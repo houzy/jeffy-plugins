@@ -27,6 +27,10 @@ if exists('loaded_project')
 endif
 let loaded_project=1
 
+if !exists('g:jeffy_plugins_enable_colors')
+    let g:jeffy_plugins_enable_colors=1
+endif
+
 if v:version < 700
     finish
 endif
@@ -171,7 +175,11 @@ function! s:ProjectUpdate()
     endif
 
     call s:HLUDSync(proj_data . '/tags', proj_data . '/udtags')
-    call s:HLUDColor()
+
+    if g:jeffy_plugins_enable_colors
+        call s:HLUDColor()
+    endif
+
     echo "update project done."
     return 1
 endfunction
@@ -201,7 +209,10 @@ function! s:ProjectLoad()
 
     " color user defined.
     call s:HLUDLoad(proj_data . '/udtags')
-    call s:HLUDColor()
+
+    if g:jeffy_plugins_enable_colors
+        call s:HLUDColor()
+    endif
 
     echon "load project done."
     return 1
@@ -231,7 +242,9 @@ command! -nargs=0 -complete=file ProjectQuit call s:ProjectQuit()
 aug Project
     au VimEnter * call s:ProjectLoad()
     au VimLeavePre * call s:ProjectQuit()
-    au BufEnter,FileType c,cpp call s:HLUDColor()
+    if g:jeffy_plugins_enable_colors
+        au BufEnter,FileType c,cpp call s:HLUDColor()
+    endif
 aug END
 
 nnoremap <leader>jc :ProjectCreate<cr>
