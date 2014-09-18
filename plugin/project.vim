@@ -234,10 +234,11 @@ endfunction
 
 " }}}
 
-command! -nargs=0 -complete=file ProjectCreate call s:ProjectCreate()
-command! -nargs=0 -complete=file ProjectUpdate call s:ProjectUpdate()
-command! -nargs=0 -complete=file ProjectLoad call s:ProjectLoad()
-command! -nargs=0 -complete=file ProjectQuit call s:ProjectQuit()
+" Conflicts with eclim.vim, add Jeffy prefix
+command! -nargs=0 -complete=file JeffyProjectCreate call s:ProjectCreate()
+command! -nargs=0 -complete=file JeffyProjectUpdate call s:ProjectUpdate()
+command! -nargs=0 -complete=file JeffyProjectLoad call s:ProjectLoad()
+command! -nargs=0 -complete=file JeffyProjectQuit call s:ProjectQuit()
 
 aug Project
     au VimEnter * call s:ProjectLoad()
@@ -247,10 +248,10 @@ aug Project
     endif
 aug END
 
-nnoremap <leader>jc :ProjectCreate<cr>
-nnoremap <leader>ju :ProjectUpdate<cr>
-nnoremap <leader>jl :ProjectLoad<cr>
-nnoremap <leader>jq :ProjectQuit<cr>
+nnoremap <leader>jc :JeffyProjectCreate<cr>
+nnoremap <leader>ju :JeffyProjectUpdate<cr>
+nnoremap <leader>jl :JeffyProjectLoad<cr>
+nnoremap <leader>jq :JeffyProjectQuit<cr>
 
 " restore 'cpo'
 let &cpo = s:cpo_save
