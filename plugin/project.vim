@@ -250,7 +250,7 @@ aug END
 
 nnoremap <leader>jc :JeffyProjectCreate<cr>
 nnoremap <leader>ju :JeffyProjectUpdate<cr>
-nnoremap <leader>jl :JeffyProjectLoad<cr>
+" nnoremap <leader>jl :JeffyProjectLoad<cr>
 nnoremap <leader>jq :JeffyProjectQuit<cr>
 
 " restore 'cpo'
